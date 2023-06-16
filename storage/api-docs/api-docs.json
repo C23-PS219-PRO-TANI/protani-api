@@ -1,0 +1,106 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Log Activity API",
+        "description": "API for managing log activities",
+        "contact": {
+            "email": "admin@example.com"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/log-activity/create": {
+            "post": {
+                "tags": [
+                    "Log Activity"
+                ],
+                "summary": "Create a new log activity",
+                "operationId": "createLogActivity",
+                "requestBody": {
+                    "description": "Log activity data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "user_id": {
+                                        "type": "integer",
+                                        "minimum": 1,
+                                        "example": 1,
+                                        "nullable": true
+                                    },
+                                    "location_id": {
+                                        "type": "integer",
+                                        "minimum": 1,
+                                        "example": 1,
+                                        "nullable": true
+                                    },
+                                    "name": {
+                                        "type": "string",
+                                        "maxLength": 255,
+                                        "minLength": 3,
+                                        "example": "Log activity name"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "maxLength": 255,
+                                        "minLength": 3,
+                                        "example": "Log activity description"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Log activity created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
